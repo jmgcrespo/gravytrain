@@ -4,6 +4,6 @@ Feature: Provider can see his details
   So that I can see if they are accurate
 
   Scenario: A Provider account is created
-    Given a Provider exist
-    When I am on the show page
+    Given a registered Provider
+    When I am on his profile page
     Then I see Provider details

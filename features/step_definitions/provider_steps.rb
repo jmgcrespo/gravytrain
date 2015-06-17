@@ -38,12 +38,12 @@ Then(/^my Provider account is not created$/) do
   expect(Provider.first).to eq(nil)
 end
 
-Given(/^a Provider exist$/) do
+Given(/^a registered Provider$/) do
   @provider = Provider.create(name: "Manu", email: "manu@caracola.com", address: "Rue del Percebe",
     postcode: "28045", about_me: "Simply great!", terms_and_conditions: "1")
 end
 
-When(/^I am on the show page$/) do
+When(/^I am on his profile page$/) do
   visit(provider_path(@provider))
 end
 
