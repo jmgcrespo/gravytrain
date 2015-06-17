@@ -21,4 +21,13 @@ RSpec.feature 'Provider can register' do
 
     expect { click_button 'Create Provider' }.not_to change { Provider.count }
   end
+
+  scenario 'The Provider does not accept the terms' do
+    visit new_provider_path
+
+    uncheck 'Terms and conditions'
+
+    expect { click_button 'Create Provider' }.not_to change { Provider.count }
+  end
+
 end
