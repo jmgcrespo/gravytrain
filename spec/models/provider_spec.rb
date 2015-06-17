@@ -8,8 +8,8 @@ RSpec.describe Provider do
         address: '10',
         postcode: 'RM1',
         about_me: 'Stuff',
-        paypal_email: 'me@me.com',
-        accepted_terms: '1'
+        email: 'me@me.com',
+        terms_and_conditions: '1'
       )
     end
 
@@ -18,9 +18,18 @@ RSpec.describe Provider do
     end
 
     it 'expects the terms to be accepted' do
-      provider.accepted_terms = '0'
+      provider.terms_and_conditions = '0'
 
       expect(provider).to_not be_valid
+    end
+
+    it 'expects required fields to be present' do
+      temp_provider = provider.clone
+
+      [ :name=, :address=, :postcode=, :email= ].each do |field|
+        temp_provider.send(field,"")
+        expect(temp_provider).not_to be_valid, "Failed #{field} validation"
+      end
     end
   end
 end
