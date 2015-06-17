@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>Gravytrain</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="fluid-container">
+<div class="col-8 header">
+<h1 class="header_title"> Gravy Train </h1>
+</div>
 
-<%= yield %>
-
+  <%= yield %>
+</div>
 </body>
 </html>

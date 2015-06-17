@@ -1,0 +1,58 @@
+
+
+$sec_font_color: #4f6228;
+
+@import 'partials/grid';
+
+
+
+body {
+font-family: "Tahoma", Geneva, sans-serif;
+max-width:1024px;
+}
+
+.header {
+  background-color: #7030a0;
+  color: white;
+}
+
+.header_title {
+  padding-left: 15px;
+}
+
+.prov_info {
+  display: flex;
+  align-items:center;
+  padding:15px;
+}
+
+.prov_info_li {
+
+}
+
+.prov_info_caption {
+  color: $sec_font_color
+}
+.prov_info_value {
+  border-radius: 3px;
+  background-color: #EDEBED;
+  padding: 0px 20px;
+  border: none;
+  padding:5px;
+  margin-left:20px;
+}
+
+.prov_email {
+  font-style: italic;
+  font-size: 0.8em;
+  margin-top: -24px;
+}
+
+
+.provider_input {
+padding:12px;
+}
+
+.prov_label {
+color: $sec_font_color;
+}
