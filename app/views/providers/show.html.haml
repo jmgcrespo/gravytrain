@@ -1,0 +1,27 @@
+
+= if flash[:notice]
+  %div.row
+    %div.col-8
+      %h1= flash[:notice]
+
+
+%div.row
+  %div.col-8
+    %h1= @provider.name
+    %p.prov_email= @provider.email
+
+%div.row
+  %div.col-4.prov_info
+    %span.prov_info_caption Address:
+    %textarea.prov_info_value= @provider.address
+
+%div.row
+  %div.col-4.prov_info
+    %span.prov_info_caption Post Code
+    %span.prov_info_value= @provider.postcode
+
+%div.row
+  %div.col-4.prov_info
+    %span.prov_info_caption About me:
+    %textarea.prov_info_value= @provider.about_me
+
