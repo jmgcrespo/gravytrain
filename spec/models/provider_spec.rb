@@ -38,7 +38,7 @@ RSpec.describe Provider do
       expect(temp_provider).not_to be_valid
     end
 
-     it 'expects an email to look like an email' do
+    it 'expects an email to look like an email' do
       provider.email = 'invalid_email'
 
       expect(provider).not_to be_valid

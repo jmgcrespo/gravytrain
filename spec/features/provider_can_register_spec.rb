@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.feature 'Provider can register' do
+
+
   scenario 'A Provider account is created' do
     visit new_provider_path
 
@@ -26,6 +28,18 @@ RSpec.feature 'Provider can register' do
     visit new_provider_path
 
     uncheck 'Terms and conditions'
+
+    expect { click_button 'Create Provider' }.not_to change { Provider.count }
+  end
+
+  scenario 'The Provider does not complete a required field' do
+    visit new_provider_path
+
+    fill_in 'Address', with: '10 Pie Lane'
+    fill_in 'Postcode', with: 'RG14PZ'
+    fill_in 'About me', with: 'I´m the best'
+    fill_in 'Email', with: 'ben@ben.com'
+    check 'Terms and conditions'
 
     expect { click_button 'Create Provider' }.not_to change { Provider.count }
   end
