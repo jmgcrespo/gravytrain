@@ -1,5 +1,5 @@
 Given(/^no Providers exist$/) do
- Provider.delete_all 
+ Provider.delete_all
 end
 
 When(/^I am on the registration page$/) do
@@ -36,4 +36,17 @@ end
 
 Then(/^my Provider account is not created$/) do
   expect(Provider.first).to eq(nil)
+end
+
+Given(/^a Provider exist$/) do
+  @provider = Provider.create(name: "Manu", email: "manu@caracola.com", address: "Rue del Percebe",
+    postcode: "28045", about_me: "Simply great!", terms_and_conditions: "1")
+end
+
+When(/^I am on the show page$/) do
+  visit(provider_path(@provider))
+end
+
+Then(/^I see Provider details$/) do
+  page.has_content?('Terms and conditions must be accepted')
 end
