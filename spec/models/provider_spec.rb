@@ -25,8 +25,8 @@ RSpec.describe Provider do
 
     it 'expects required fields to be present' do
       temp_provider = provider.dup
-      [ :name=, :address=, :postcode=, :email= ].each do |field|
-        temp_provider.send(field,"")
+      [:name=, :address=, :postcode=, :email=].each do |field|
+        temp_provider.send(field, '')
         expect(temp_provider).not_to be_valid, "Failed #{field} validation"
       end
     end

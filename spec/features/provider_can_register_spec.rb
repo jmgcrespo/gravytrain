@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Provider can register' do
-
-
   scenario 'A Provider account is created' do
     visit new_provider_path
 
@@ -43,5 +41,4 @@ RSpec.feature 'Provider can register' do
 
     expect { click_button 'Create Provider' }.not_to change { Provider.count }
   end
-
 end
