@@ -27,7 +27,7 @@ Then(/^my Provider account is created$/) do
 end
 
 Then(/^I see a confirmatino message$/) do
-  page.has_content?('Welcome to Gravy Train!')
+  expect(page.has_content?('Welcome to Gravy Train!')).to be true
 end
 
 Then(/^I see an error message$/) do
@@ -48,5 +48,5 @@ When(/^I am on his profile page$/) do
 end
 
 Then(/^I see Provider details$/) do
-  page.has_content?('Terms and conditions must be accepted')
+  expect(page.has_content?('Rue del Percebe')).to be true
 end
