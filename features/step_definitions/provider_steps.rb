@@ -50,3 +50,7 @@ end
 Then(/^I see Provider details$/) do
   expect(page.has_content?('Rue del Percebe')).to be true
 end
+
+Then(/^I see a confirmation email$/) do
+  expect(ActionMailer::Base.deliveries).not_to be_empty
+end
