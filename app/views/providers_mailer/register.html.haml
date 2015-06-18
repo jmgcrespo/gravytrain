@@ -3,4 +3,10 @@
   %body
     %p
       Dear #{@provider.name}
-    %p Thanks for registering - The Gravy Team
+    %p
+      Thanks for registering with us.
+    %p
+      Please follow 
+      = link_to("this",confirm_provider_url(@provider))
+      link to confirm your account
+      %p The GravyTrain

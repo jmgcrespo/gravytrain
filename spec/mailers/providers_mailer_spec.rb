@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProvidersMailer do
   describe '.register' do
     let(:provider) do
-      provider = Provider.new(
+      provider = Provider.create(
         name: 'Ben',
         address: '10',
         postcode: 'RM1',
@@ -24,8 +24,11 @@ RSpec.describe ProvidersMailer do
     end
 
     it 'is addressed to provider' do
-      debugger
-      expect(subject.body.decoded).to include(provider.name)
+      expect(subject.body.parts.first.decoded).to include(provider.name)
+    end
+
+    it 'contains a confirmation link' do
+      expect(subject.body.parts.first.decoded).to include(confirm_provider_url(provider))
     end
   end
 end

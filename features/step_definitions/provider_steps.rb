@@ -22,12 +22,13 @@ When(/^I submit my information$/) do
   click_button('Create Provider')
 end
 
-Then(/^my Provider account is created$/) do
+Then(/^my Provider account is created unconfirmed$/) do
   expect(Provider.first.name).to eq('Dave')
+  expect(Provider.first.confirmed).to be false
 end
 
 Then(/^I see a confirmatino message$/) do
-  expect(page.has_content?('Welcome to Gravy Train!')).to be true
+  expect(page.body).to match(/Welcome to Gravy Train!/)
 end
 
 Then(/^I see an error message$/) do
@@ -54,3 +55,27 @@ end
 Then(/^I see a confirmation email$/) do
   expect(ActionMailer::Base.deliveries).not_to be_empty
 end
+
+Given(/^I have registered$/) do
+  @provider = Provider.create(
+    name: "Manu",
+    email: "manu@caracola.com",
+    address: "Rue del Percebe",
+    postcode: "28045",
+    about_me: "Simply great!",
+    terms_and_conditions: "1"
+  )
+end
+
+When(/^I follow the link within my confirmation email$/) do
+  visit confirm_provider_path(@provider)
+end
+
+Then(/^my account is confirmed$/) do
+  expect(@provider.reload.confirmed).to be true
+end
+
+Then(/^I am directed to my profile$/) do
+  expect(page.body).to match(/Your account is now confirmed/)
+end
+

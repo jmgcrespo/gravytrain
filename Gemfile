@@ -46,5 +46,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'haml'
+  gem 'guard-rspec', require: false
 end
 
