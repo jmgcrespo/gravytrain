@@ -13,14 +13,12 @@ Given(/^a registered provider with events$/) do
 end
 
 When(/^I view the provider's events$/) do
-  visit provider_events(@provider)
+  visit provider_events_path(@provider)
 
   expect(page.status_code).to be < 400
 end
 
 Then(/^I see a list of events offered by the provider$/) do
-  visit provider_events(@provider)
-
   expect(page.body).to match(/Parkour and BBQ/)
   expect(page.body).to match(/Extreme TDD session/)
   expect(page.body).to match(/Ben Lovell mute session/)

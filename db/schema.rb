@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618131935) do
+ActiveRecord::Schema.define(version: 20150619120953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "provider_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "events", ["provider_id"], name: "index_events_on_provider_id", using: :btree
 
   create_table "providers", force: :cascade do |t|
     t.string  "name"
@@ -26,4 +36,5 @@ ActiveRecord::Schema.define(version: 20150618131935) do
     t.boolean "confirmed", default: false
   end
 
+  add_foreign_key "events", "providers"
 end
