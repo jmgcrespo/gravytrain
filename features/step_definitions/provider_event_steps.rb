@@ -7,7 +7,8 @@ Given(/^a registered provider with events$/) do
     about_me: "Simply great!",
     terms_and_conditions: "1"
   )
-  @event1 = @provider.events.create!(name: "Parko and BBQ", description: "What else do you need.")
+  
+  @event1 = @provider.events.create!(name: "Parkour and BBQ", description: "What else do you need.")
   @event2 = @provider.events.create!(name: "Extreme TDD session")
   @event3 = @provider.events.create!(name: "Ben Lovell mute session")
 end
