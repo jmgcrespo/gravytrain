@@ -1,4 +1,4 @@
-Feature: Provider can see his details
+Feature: Provider can see their details
   As a Provider
   I want to see my details
   So that I can see if they are accurate

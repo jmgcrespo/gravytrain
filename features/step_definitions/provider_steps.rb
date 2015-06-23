@@ -24,15 +24,15 @@ end
 
 Then(/^my Provider account is created unconfirmed$/) do
   expect(Provider.first.name).to eq('Dave')
-  expect(Provider.first.confirmed).to be false
+  expect(Provider.first).not_to be_confirmed
 end
 
-Then(/^I see a confirmatino message$/) do
+Then(/^I see a confirmation message$/) do
   expect(page.body).to match(/Welcome to Gravy Train!/)
 end
 
 Then(/^I see an error message$/) do
-  page.has_content?('Terms and conditions must be accepted!')
+  expect(page).to have_content 'Terms and conditions must be accepted'
 end
 
 Then(/^my Provider account is not created$/) do
@@ -49,7 +49,7 @@ When(/^I am on his profile page$/) do
 end
 
 Then(/^I see Provider details$/) do
-  expect(page.has_content?('Rue del Percebe')).to be true
+  expect(page).to have_content 'Rue del Percebe'
 end
 
 Then(/^I see a confirmation email$/) do
@@ -72,10 +72,10 @@ When(/^I follow the link within my confirmation email$/) do
 end
 
 Then(/^my account is confirmed$/) do
-  expect(@provider.reload.confirmed).to be true
+  expect(@provider.reload).to be_confirmed
 end
 
 Then(/^I am directed to my profile$/) do
-  expect(page.body).to match(/Your account is now confirmed/)
+  expect(page).to have_content 'Your account is now confirmed'
 end
 

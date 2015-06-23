@@ -20,7 +20,7 @@ When(/^I view the provider's events$/) do
 end
 
 Then(/^I see a list of events offered by the provider$/) do
-  expect(page.body).to match(/Parkour and BBQ/)
-  expect(page.body).to match(/Extreme TDD session/)
-  expect(page.body).to match(/Ben Lovell mute session/)
+  expect(page).to have_content 'Parkour and BBQ'
+  expect(page).to have_content 'Extreme TDD session'
+  expect(page).to have_content 'Ben Lovell mute session'
 end

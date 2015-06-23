@@ -6,10 +6,9 @@ class ProvidersController < ApplicationController
   def create
     @provider = Provider.new(provider_params)
     if @provider.save
-      flash[:notice] = 'Welcome to Gravy Train!, please follow instrucions in'\
-        ' the confirmation email!'
       ProvidersMailer.register(@provider).deliver_later
-      redirect_to @provider
+      redirect_to @provider, notice: 'Welcome to Gravy Train!, please follow instrucions in'\
+        ' the confirmation email!'
     else
       render :new
     end

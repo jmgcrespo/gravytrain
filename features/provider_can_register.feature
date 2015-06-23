@@ -10,7 +10,7 @@ Feature: Provider can register
     And I check terms and conditions
     And I submit my information
     Then my Provider account is created unconfirmed
-    And I see a confirmatino message
+    And I see a confirmation message
     And I see a confirmation email
 
 Scenario: Confirming my Provider account
